@@ -30,6 +30,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {res.send('It works!')})
 app.post('/signIn', signIn.handleSignIn(db, bcrypt))  
 app.post('/register', register.handleRegister(db, bcrypt))
 app.get('/profile/:id', profile.handleProfile(db))
