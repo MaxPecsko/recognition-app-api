@@ -30,14 +30,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {res.send('It works!')})
-app.post('/signIn', signIn.handleSignIn(db, bcrypt))  
-app.post('/register', register.handleRegister(db, bcrypt))
-app.get('/profile/:id', profile.handleProfile(db))
-app.put('/image', image.handleImage(db))
+app.get('/', (req, res) => {res.send('It works!')});
+app.post('/signIn', signIn.handleSignIn(db, bcrypt));  
+app.post('/register', register.handleRegister(db, bcrypt));
+app.get('/profile/:id', profile.handleProfile(db));
+app.put('/image', image.handleImage(db));
 app.post('/imageUrl', (req, res) => {image.handleApiCall(req, res)});
 
 // LISTENING TO PORT
 app.listen(process.env.PORT, () => {
     console.log(`App is running on port ${process.env.PORT}`);
-})
+});
