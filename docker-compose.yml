@@ -1,0 +1,27 @@
+version: "3.6"
+
+services:
+  # NodeJS
+  recognition-app-api:
+    container_name: backend
+    build: ./
+    command: yarn start
+    working_dir: /usr/src/recognition-app-api
+    environment:
+      POSTGRES_URI: postgres://admin:password@postgres:5432/smart-brain
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/recognition-app-api
+  # Postgres
+  postgres:
+    container_name: postgres
+    build: ./postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_URL: postgres://admin:password@localhost:5432/recognition-app
+      POSTGRES_DB: recognition-app
+      POSTGRES_HOST: postgres
+    ports:
+      - "5432:5432"
